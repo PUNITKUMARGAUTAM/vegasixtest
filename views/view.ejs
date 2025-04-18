@@ -1,0 +1,22 @@
+<h2><%= blog.title %></h2>
+<img src="/<%= blog.image %>" width="200"><br>
+<p><%= blog.description %></p>
+
+<h3>Comments:</h3>
+<form action="/blog/comment/<%= blog._id %>" method="POST">
+  <input name="text" placeholder="Leave a comment" required>
+  <button type="submit">Comment</button>
+</form>
+
+<% blog.comments.forEach((comment, index) => { %>
+  <div style="margin-top:10px;">
+    <p><strong>Comment:</strong> <%= comment.text %></p>
+    <% comment.replies.forEach(reply => { %>
+      <p style="margin-left:20px;">↳ <%= reply %></p>
+    <% }) %>
+    <form action="/blog/reply/<%= blog._id %>/<%= index %>" method="POST">
+      <input name="reply" placeholder="Reply" required>
+      <button type="submit">Reply</button>
+    </form>
+  </div>
+<% }) %>

@@ -1,0 +1,7 @@
+<h2>Edit Blog</h2>
+<form action="/blog/update/<%= blog._id %>" method="POST" enctype="multipart/form-data">
+  <input name="title" value="<%= blog.title %>" required><br>
+  <textarea name="description"><%= blog.description %></textarea><br>
+  <input type="file" name="image"><br>
+  <button type="submit">Update</button>
+</form>
